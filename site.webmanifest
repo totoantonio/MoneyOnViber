@@ -1,0 +1,15 @@
+{
+  "name": "Making Money on Viber",
+  "short_name": "Viber eBook",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#6f3ff5",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

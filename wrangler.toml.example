@@ -1,0 +1,8 @@
+name = "ebook-website"
+compatibility_date = "2026-04-19"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "EBOOK_DB"
+database_name = "ebook-website"
+database_id = "replace-with-your-d1-database-id"
