@@ -95,10 +95,6 @@ dl {
   font-weight: 700;
 }
 
-.brand-text-short {
-  display: none;
-}
-
 .brand-mark {
   width: 18px;
   height: 18px;
@@ -677,14 +673,6 @@ h3 {
     max-width: 44%;
     flex: 0 1 auto;
     font-size: 0.82rem;
-  }
-
-  .brand-text-full {
-    display: none;
-  }
-
-  .brand-text-short {
-    display: inline;
   }
 
   .brand-text {
