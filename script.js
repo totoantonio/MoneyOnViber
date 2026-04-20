@@ -10,18 +10,8 @@ const emailInput = document.querySelector("#email");
 const paymentMethodInput = document.querySelector("#payment-method");
 const formMessage = document.querySelector("#form-message");
 const priceInput = document.querySelector("#price");
-
-const currencyConfig = {
-  PH: { currency: "PHP", amount: 199, locale: "en-PH" },
-  US: { currency: "USD", amount: 3.32, locale: "en-US" },
-  CA: { currency: "USD", amount: 3.32, locale: "en-CA" },
-  GB: { currency: "USD", amount: 3.32, locale: "en-GB" },
-  AU: { currency: "USD", amount: 3.32, locale: "en-AU" },
-  NZ: { currency: "USD", amount: 3.32, locale: "en-NZ" },
-  SG: { currency: "USD", amount: 3.32, locale: "en-SG" },
-  MY: { currency: "USD", amount: 3.32, locale: "en-MY" },
-  AE: { currency: "USD", amount: 3.32, locale: "en-AE" }
-};
+const formNote = document.querySelector("#form-note");
+const gcashPanel = document.querySelector("#gcash-panel");
 
 function setMessage(message, state) {
   formMessage.textContent = message;
@@ -32,42 +22,29 @@ function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
 
-function getRegionFromBrowser() {
-  const locale = navigator.language || "en-PH";
-  const localeMatch = locale.match(/-([A-Z]{2})$/i);
+function updatePaymentUI() {
+  const paymentMethod = paymentMethodInput?.value || "gcash";
+  const isGCash = paymentMethod === "gcash";
 
-  if (localeMatch) {
-    return localeMatch[1].toUpperCase();
+  if (gcashPanel) {
+    gcashPanel.hidden = !isGCash;
   }
 
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-  if (timeZone.startsWith("Asia/Manila")) {
-    return "PH";
+  if (formNote) {
+    formNote.textContent = isGCash
+      ? "Enter your email, scan the QR code, and send your proof of payment by email for delivery confirmation."
+      : "Enter your email first. Payment opens in the next step so the purchase can be matched to your delivery address.";
   }
-
-  return "PH";
 }
 
-function formatPriceForRegion(region) {
-  const config = currencyConfig[region] || currencyConfig.PH;
-  return new Intl.NumberFormat(config.locale, {
-    style: "currency",
-    currency: config.currency,
-    maximumFractionDigits: config.currency === "PHP" ? 0 : 2
-  }).format(config.amount);
-}
-
-if (priceInput) {
-  const region = getRegionFromBrowser();
-  priceInput.value = formatPriceForRegion(region);
-}
+updatePaymentUI();
+paymentMethodInput?.addEventListener("change", updatePaymentUI);
 
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = emailInput.value.trim();
   const paymentMethod = paymentMethodInput.value;
-  const region = getRegionFromBrowser();
 
   if (!isValidEmail(email)) {
     setMessage("Enter a valid email address before continuing.", "error");
@@ -81,13 +58,17 @@ form?.addEventListener("submit", async (event) => {
       JSON.stringify({
         email,
         paymentMethod,
-        region,
         displayedPrice: priceInput?.value || "",
         createdAt: new Date().toISOString()
       })
     );
   } catch (error) {
     console.warn("Local storage unavailable:", error);
+  }
+
+  if (paymentMethod === "gcash") {
+    setMessage("Complete your GCash payment, then email the proof of payment to alfiesuperhalk@gmail.com.", "success");
+    return;
   }
 
   try {
@@ -101,7 +82,7 @@ form?.addEventListener("submit", async (event) => {
       body: JSON.stringify({
         email,
         paymentMethod,
-        region,
+        region: "GLOBAL",
         displayedPrice: priceInput?.value || ""
       })
     });
