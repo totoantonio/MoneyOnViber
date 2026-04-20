@@ -95,6 +95,10 @@ dl {
   font-weight: 700;
 }
 
+.brand-text-short {
+  display: none;
+}
+
 .brand-mark {
   width: 18px;
   height: 18px;
@@ -647,6 +651,7 @@ h3 {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    flex-wrap: nowrap;
     gap: 10px;
     background: #ffffff;
     backdrop-filter: none;
@@ -669,11 +674,20 @@ h3 {
 
   .brand {
     min-width: 0;
-    flex: 1 1 auto;
-    font-size: 0.88rem;
+    max-width: 44%;
+    flex: 0 1 auto;
+    font-size: 0.82rem;
   }
 
-  .brand span:last-child {
+  .brand-text-full {
+    display: none;
+  }
+
+  .brand-text-short {
+    display: inline;
+  }
+
+  .brand-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -682,9 +696,9 @@ h3 {
   .topbar-text-link,
   .topbar-link {
     flex: 0 0 auto;
-    min-height: 38px;
-    padding: 0 10px;
-    font-size: 0.84rem;
+    min-height: 36px;
+    padding: 0 8px;
+    font-size: 0.8rem;
     white-space: nowrap;
   }
 
