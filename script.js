@@ -12,6 +12,9 @@ const formMessage = document.querySelector("#form-message");
 const priceInput = document.querySelector("#price");
 const formNote = document.querySelector("#form-note");
 const gcashPanel = document.querySelector("#gcash-panel");
+const topbar = document.querySelector(".topbar");
+const menuToggle = document.querySelector(".menu-toggle");
+const topbarNav = document.querySelector("#primary-nav");
 
 function setMessage(message, state) {
   formMessage.textContent = message;
@@ -21,6 +24,35 @@ function setMessage(message, state) {
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
+
+function setMenuState(isOpen) {
+  if (!topbar || !menuToggle || !topbarNav) {
+    return;
+  }
+
+  topbar.classList.toggle("menu-open", isOpen);
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+}
+
+setMenuState(false);
+
+menuToggle?.addEventListener("click", () => {
+  const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+  setMenuState(!isOpen);
+});
+
+topbarNav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    setMenuState(false);
+  });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 720) {
+    setMenuState(false);
+  }
+});
 
 function updatePaymentUI() {
   const paymentMethod = paymentMethodInput?.value || "gcash";
