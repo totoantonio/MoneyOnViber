@@ -96,10 +96,9 @@ dl {
 }
 
 .brand-mark {
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
-  background: linear-gradient(135deg, var(--text), var(--accent));
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
 }
 
 .topbar-nav {
@@ -130,14 +129,14 @@ dl {
 .section {
   max-width: calc(var(--max-width) + 40px);
   margin: 0 auto;
-  padding-top: 68px;
-  padding-bottom: 68px;
+  padding-top: 56px;
+  padding-bottom: 56px;
 }
 
 .hero {
   display: grid;
   gap: 24px;
-  padding-top: 44px;
+  padding-top: 32px;
 }
 
 .hero-copy-block {
@@ -375,7 +374,7 @@ h3 {
 }
 
 .section-heading {
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
 .proof-strip {
@@ -586,6 +585,8 @@ h3 {
   .section {
     padding-left: 32px;
     padding-right: 32px;
+    padding-top: 68px;
+    padding-bottom: 68px;
   }
 
   .footer {
@@ -643,18 +644,56 @@ h3 {
 
 @media (max-width: 719px) {
   .topbar {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
     background: #ffffff;
     backdrop-filter: none;
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
 
   .topbar-nav {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    justify-content: flex-end;
+    scrollbar-width: none;
+  }
+
+  .topbar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+    font-size: 0.88rem;
+  }
+
+  .brand span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-text-link,
+  .topbar-link {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    white-space: nowrap;
   }
 
   h1 {
     max-width: 11ch;
+  }
+
+  h2 {
+    max-width: 12ch;
   }
 }
 
