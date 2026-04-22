@@ -2,6 +2,13 @@ const topbar = document.querySelector(".topbar");
 const menuToggle = document.querySelector(".menu-toggle");
 const topbarNav = document.querySelector("#primary-nav");
 const methodCards = document.querySelectorAll(".method");
+const gumroadLinks = document.querySelectorAll('a[href="https://twentytwopubs.gumroad.com/l/hojfjg"]');
+const copyEmailButton = document.querySelector("[data-copy-email]");
+
+function trackMetaEvent(eventName, parameters = {}) {
+  if (typeof window.fbq !== "function") return;
+  window.fbq("trackCustom", eventName, parameters);
+}
 
 function setMenuState(isOpen) {
   if (!topbar || !menuToggle || !topbarNav) return;
@@ -56,3 +63,32 @@ function setupMethodReveal() {
 }
 
 setupMethodReveal();
+
+gumroadLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    trackMetaEvent("GumroadClick", {
+      destination: "gumroad",
+      product: "money-on-viber"
+    });
+  });
+});
+
+copyEmailButton?.addEventListener("click", async () => {
+  const email = copyEmailButton.getAttribute("data-copy-email");
+  if (!email || !navigator.clipboard?.writeText) return;
+
+  try {
+    await navigator.clipboard.writeText(email);
+    copyEmailButton.textContent = "Copied";
+    trackMetaEvent("EmailCopied", {
+      destination: "manual-payment-email",
+      product: "money-on-viber"
+    });
+
+    window.setTimeout(() => {
+      copyEmailButton.textContent = "Copy email";
+    }, 1600);
+  } catch (error) {
+    console.error("Failed to copy email address.", error);
+  }
+});

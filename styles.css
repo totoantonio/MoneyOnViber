@@ -848,6 +848,42 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
   text-underline-offset: 2px;
 }
 
+.payment-email-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.payment-email-link {
+  color: rgba(255,255,255,0.85);
+}
+
+.copy-email-button {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.copy-email-button:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.copy-email-button:focus-visible {
+  outline: 2px solid rgba(115,96,242,0.95);
+  outline-offset: 2px;
+}
+
 .payment-future {
   margin: 0;
   color: rgba(255,255,255,0.32);
@@ -1146,6 +1182,8 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
   .payment-step { gap: 12px; }
   .step-body strong { margin-bottom: 3px; }
   .step-body p { line-height: 1.5; }
+  .payment-email-group { gap: 8px; }
+  .copy-email-button { padding: 6px 9px; }
 
   .faq-list { gap: 10px; }
   .faq-item { padding: 18px; }
