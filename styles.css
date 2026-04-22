@@ -1061,12 +1061,67 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
   .narrative-body { padding: 24px 24px 28px; }
 
   .offer { padding: 40px 24px; border-radius: 0; margin: 0; gap: 36px; }
+
+  .buy-choice {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .buy-choice-title {
+    font-size: 0.92rem;
+  }
+
+  .gumroad-option {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .gumroad-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .gumroad-logo svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .gumroad-copy strong {
+    font-size: 0.92rem;
+  }
+
+  .gumroad-copy span {
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .buy-choice-note {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
 }
 
 @media (max-width: 430px) {
   .brand-text { font-size: 0.84rem; }
   h1 { font-size: 2rem; }
   .offer { padding: 32px 24px; border-radius: 0; }
+
+  .gumroad-option {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .gumroad-copy strong {
+    font-size: 0.88rem;
+  }
+
+  .gumroad-copy span {
+    font-size: 0.78rem;
+  }
 }
 
 /* ─────────────────────────────────────────
