@@ -1114,6 +1114,8 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
     border-right: 0;
     border-bottom: 1px solid rgba(255,255,255,0.13);
     padding: 16px 22px;
+    align-items: center;
+    text-align: center;
   }
   .narrative-number:last-child { border-bottom: 0; }
   .narrative-body { padding: 20px 22px 24px; }
@@ -1135,6 +1137,13 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
   .credibility-card { padding: 18px 18px; }
 
   .offer { padding: 32px 24px; border-radius: 0; margin: 0; gap: 26px; }
+  .offer-left,
+  .offer-right { display: contents; }
+  .offer-copy { order: 1; }
+  .qr-block { order: 2; }
+  .payment-steps { order: 3; }
+  .buy-choice { order: 4; }
+  .payment-future { order: 5; }
 
   .buy-choice {
     padding: 16px;
