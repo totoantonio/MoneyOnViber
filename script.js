@@ -2,6 +2,19 @@ const topbar = document.querySelector(".topbar");
 const menuToggle = document.querySelector(".menu-toggle");
 const topbarNav = document.querySelector("#primary-nav");
 const methodCards = document.querySelectorAll(".method");
+const designRevealTargets = document.querySelectorAll([
+  ".narrative-card",
+  ".audience-card",
+  ".details-grid > *",
+  ".chapter-row",
+  ".credibility-product",
+  ".credibility-card",
+  ".offer-copy",
+  ".qr-block",
+  ".payment-step",
+  ".buy-choice",
+  ".faq-item"
+].join(","));
 const gumroadLinks = document.querySelectorAll('a[href="https://twentytwopubs.gumroad.com/l/hojfjg"]');
 const copyEmailButton = document.querySelector("[data-copy-email]");
 
@@ -63,6 +76,37 @@ function setupMethodReveal() {
 }
 
 setupMethodReveal();
+
+function setupDesignReveal() {
+  if (!designRevealTargets.length) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  designRevealTargets.forEach((element, index) => {
+    element.classList.add("design-reveal");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 55}ms`);
+  });
+
+  if (reducedMotion.matches || typeof IntersectionObserver === "undefined") {
+    designRevealTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, instance) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      instance.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.14,
+    rootMargin: "0px 0px -10% 0px"
+  });
+
+  designRevealTargets.forEach((element) => observer.observe(element));
+}
+
+setupDesignReveal();
 
 gumroadLinks.forEach((link) => {
   link.addEventListener("click", () => {
