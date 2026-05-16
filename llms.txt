@@ -1,12 +1,12 @@
 # Making Money on Viber
 
-> Practical Viber business guide for creators, freelancers, consultants, and small businesses.
+> Practical 70-page Viber business guide for creators, freelancers, consultants, home-based workers, employed side earners, and small businesses.
 
 Canonical URL: https://moneyonviber.pages.dev/
 
 ## Summary
 
-Making Money on Viber is a 70-page digital guide that explains how to use Viber for lead generation, sales, audience building, client communication, and recurring revenue. The product includes PDF and EPUB formats and is sold as a personal-use ebook.
+Making Money on Viber is a 70-page digital guide that explains how to use Viber for lead generation, sales, audience building, client communication, community monetization, and recurring revenue. The product includes PDF and EPUB formats and is sold as a personal-use ebook.
 
 ## Key Facts
 
@@ -15,6 +15,7 @@ Making Money on Viber is a 70-page digital guide that explains how to use Viber 
 - Length: 70 pages
 - Chapters: 27
 - Price: PhP 199
+- Checkout: QR PH manual payment or Gumroad checkout
 - Topic: Viber monetization, sales, communication, and business systems
 
 ## Main Sections
