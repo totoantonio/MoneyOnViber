@@ -10,12 +10,11 @@ const designRevealTargets = document.querySelectorAll([
   ".credibility-product",
   ".credibility-card",
   ".offer-copy",
-  ".qr-block",
-  ".payment-step",
   ".buy-choice",
+  ".payment-options",
   ".faq-item"
 ].join(","));
-const gumroadLinks = document.querySelectorAll('a[href="https://twentytwopubs.gumroad.com/l/hojfjg"]');
+const gumroadLinks = document.querySelectorAll('a[href*="gumroad"]');
 const copyEmailButton = document.querySelector("[data-copy-email]");
 
 function trackMetaEvent(eventName, parameters = {}) {
@@ -113,6 +112,10 @@ gumroadLinks.forEach((link) => {
     trackMetaEvent("GumroadClick", {
       destination: "gumroad",
       product: "money-on-viber"
+    });
+    trackMetaEvent("InitiateCheckout", {
+      currency: "PHP",
+      value: 199
     });
   });
 });
