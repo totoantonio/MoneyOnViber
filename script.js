@@ -14,12 +14,19 @@ const designRevealTargets = document.querySelectorAll([
   ".payment-options",
   ".faq-item"
 ].join(","));
-const gumroadLinks = document.querySelectorAll('a[href*="gumroad"]');
+const gumroadBuyButton = document.getElementById("gumroad-buy-button");
 const copyEmailButton = document.querySelector("[data-copy-email]");
+const buySection = document.getElementById("buy");
 
 function trackMetaEvent(eventName, parameters = {}) {
   if (typeof window.fbq !== "function") return;
   window.fbq("trackCustom", eventName, parameters);
+}
+
+function trackMetaStandardEvent(eventName, parameters = {}) {
+  if (typeof window.fbq !== "function") return;
+  window.fbq("track", eventName, parameters);
+  console.log(`✓ Facebook pixel tracked: ${eventName}`);
 }
 
 function setMenuState(isOpen) {
@@ -107,16 +114,23 @@ function setupDesignReveal() {
 
 setupDesignReveal();
 
-gumroadLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    trackMetaEvent("GumroadClick", {
-      destination: "gumroad",
-      product: "money-on-viber"
-    });
-    trackMetaEvent("InitiateCheckout", {
-      currency: "PHP",
-      value: 199
-    });
+if (buySection) {
+  trackMetaStandardEvent("ViewContent", {
+    value: 199,
+    currency: "PHP",
+    content_name: "Making Money on Viber Ebook",
+    content_type: "product",
+    content_id: "moneyonviber-ebook-2026"
+  });
+}
+
+gumroadBuyButton?.addEventListener("click", () => {
+  trackMetaStandardEvent("InitiateCheckout", {
+    value: 199,
+    currency: "PHP",
+    content_name: "Making Money on Viber Ebook - 70 Pages",
+    content_type: "product",
+    content_id: "moneyonviber-ebook-2026"
   });
 });
 
