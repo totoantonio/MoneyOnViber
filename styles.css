@@ -129,6 +129,10 @@ p, li, dd { text-wrap: pretty; }
   contain-intrinsic-size: auto 720px;
 }
 
+.testimonials {
+  content-visibility: visible;
+}
+
 /* ─────────────────────────────────────────
    HERO  ── dark card, fully rounded
 ───────────────────────────────────────── */
