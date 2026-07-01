@@ -1419,7 +1419,7 @@ h3 { margin-bottom: 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.3
     justify-content: center;
   }
   .hero .book-cover-image {
-    width: min(44vw, 150px);
+    width: min(62vw, 240px);
     border-radius: 8px;
     box-shadow: 0 12px 28px rgba(15,17,24,0.45), 0 4px 10px rgba(15,17,24,0.28);
   }
