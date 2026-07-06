@@ -675,6 +675,17 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href*="gumroad.com"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead');
+          }
+        });
+      });
+    });
+  </script>
   <script src="script.js" defer></script>
 </body>
 </html>
